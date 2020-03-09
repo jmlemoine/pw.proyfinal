@@ -1,34 +1,29 @@
-package modelo.EntityServices.EntityServices;
+package dao.Implementations;
 
 import dao.interfaces.UsuarioDAO;
 import encapsulacion.Usuario;
+import modelo.EntityServices.utils.CRUD;
 
 import java.util.List;
 
-public class UsuarioService implements UsuarioDAO {
-    //KLK
-    private static UsuarioService instancia;
-
-    public static UsuarioService getInstancia() {
-        if(instancia == null){
-            instancia = new UsuarioService();
-        }
-        return instancia;
-    }
-
-
-    @Override
-    public void insert(Usuario e) {
-
+public class UsuarioDAOImpl extends CRUD<Usuario> implements UsuarioDAO {
+//KLK
+    public UsuarioDAOImpl(Class<Usuario> usuarioClass){
+        super(usuarioClass);
     }
 
     @Override
-    public void update(Usuario e) {
-
+    public void insert(Usuario e){
+        crear(e);
     }
 
     @Override
-    public void delete(Usuario e) {
+    public void update(Usuario e){
+        editar(e);
+    }
+
+    @Override
+    public void delete(Usuario e){
 
     }
 
@@ -51,4 +46,6 @@ public class UsuarioService implements UsuarioDAO {
     public List<Usuario> getPagination(int pag) {
         return null;
     }
+
+
 }
