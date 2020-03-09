@@ -6,7 +6,7 @@ import encapsulacion.Usuario;
 import java.util.List;
 
 public class UsuarioService implements UsuarioDAO {
-    //KLK
+    ////////
     private static UsuarioService instancia;
 
     public static UsuarioService getInstancia() {

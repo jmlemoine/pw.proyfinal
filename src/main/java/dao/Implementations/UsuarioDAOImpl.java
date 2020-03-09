@@ -7,7 +7,7 @@ import modelo.EntityServices.utils.CRUD;
 import java.util.List;
 
 public class UsuarioDAOImpl extends CRUD<Usuario> implements UsuarioDAO {
-//KLK
+    ////////
     public UsuarioDAOImpl(Class<Usuario> usuarioClass){
         super(usuarioClass);
     }

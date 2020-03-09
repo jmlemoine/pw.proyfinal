@@ -3,7 +3,7 @@ package dao.interfaces;
 import encapsulacion.Usuario;
 
 import java.util.List;
-//KLK
+////////
 public interface UsuarioDAO {
 
     void insert(Usuario e);

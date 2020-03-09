@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class CRUD<T> {
-//KLK
+    ////////
     private static EntityManagerFactory entityManagerFactory;
     private Class<T> tClass;
 
