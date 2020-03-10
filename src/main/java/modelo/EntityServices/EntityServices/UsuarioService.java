@@ -1,5 +1,6 @@
 package modelo.EntityServices.EntityServices;
 
+import dao.Implementations.UsuarioDAOImpl;
 import dao.interfaces.UsuarioDAO;
 import encapsulacion.Usuario;
 
@@ -16,39 +17,44 @@ public class UsuarioService implements UsuarioDAO {
         return instancia;
     }
 
+    private UsuarioDAOImpl usuarioDAO;
+
+    public UsuarioService(){
+        usuarioDAO = new UsuarioDAOImpl(Usuario.class);
+    }
 
     @Override
     public void insert(Usuario e) {
-
+        usuarioDAO.insert(e);
     }
 
     @Override
     public void update(Usuario e) {
-
+        usuarioDAO.update(e);
     }
 
     @Override
     public void delete(Usuario e) {
-
+        usuarioDAO.delete(e);
     }
 
     @Override
     public List<Usuario> getAll() {
-        return null;
+        return usuarioDAO.getAll();
     }
 
     @Override
     public Usuario getByID(long id) {
-        return null;
+        return usuarioDAO.getByID(id);
     }
 
     @Override
     public Usuario validateLogin(String user, String pass) {
-        return null;
+        return usuarioDAO.validateLogin(user, pass);
     }
 
     @Override
     public List<Usuario> getPagination(int pag) {
-        return null;
+        return usuarioDAO.getPagination(pag);
     }
 }
