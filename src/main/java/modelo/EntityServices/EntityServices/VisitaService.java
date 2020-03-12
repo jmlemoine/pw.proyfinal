@@ -7,7 +7,7 @@ import encapsulacion.Visita;
 import java.util.List;
 
 public class VisitaService  implements VisitaDAO {
-
+    ////////
     private VisitaDAOImpl visitaDAO;
     private static VisitaService instancia;
 

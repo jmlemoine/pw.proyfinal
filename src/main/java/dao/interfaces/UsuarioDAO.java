@@ -3,9 +3,9 @@ package dao.interfaces;
 import encapsulacion.Usuario;
 
 import java.util.List;
-////////
-public interface UsuarioDAO {
 
+public interface UsuarioDAO {
+    ////////
     void insert(Usuario e);
 
     void update(Usuario e);

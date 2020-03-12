@@ -5,7 +5,7 @@ import encapsulacion.Visita;
 import java.util.List;
 
 public interface VisitaDAO {
-
+    ////////
     void insert(Visita e);
 
     void update(Visita e);

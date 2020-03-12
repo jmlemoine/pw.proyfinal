@@ -5,7 +5,7 @@ import encapsulacion.Ruta;
 import java.util.List;
 
 public interface RutaDAO {
-
+    ////////
     void insert(Ruta e);
 
     void update(Ruta e);

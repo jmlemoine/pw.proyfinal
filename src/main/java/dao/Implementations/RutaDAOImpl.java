@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class RutaDAOImpl extends CRUD<Ruta> implements RutaDAO {
-
+    ////////
     public RutaDAOImpl(Class<Ruta> rutaClass) {
         super(rutaClass);
 

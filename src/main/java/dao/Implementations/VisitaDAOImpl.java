@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class VisitaDAOImpl extends CRUD<Visita> implements VisitaDAO {
-
+    ////////
     public VisitaDAOImpl(Class<Visita> visitaClass){
         super(visitaClass);
 
