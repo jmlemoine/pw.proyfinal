@@ -91,6 +91,38 @@ import static spark.Spark.*;
                 return new ModelAndView(attributes, "login.ftl");
             }, freeMarkerEngine);
 
+            post("/iniciarSesion", (request, response) -> {
+
+                String user = request.queryParams("usuario");
+                String contra = request.queryParams("password");
+                String recordar = request.queryParams("remember");
+
+                System.out.println(recordar);
+                System.out.println(user+" pass : "+contra);
+                Usuario usuario1 = UsuarioService.getInstancia().validateLogin(user, contra);
+
+                Map<String, Object> jsonResponse = new HashMap<>();
+                if (usuario1 != null){
+                    if (recordar != null && recordar.equalsIgnoreCase("on")) {
+
+                        Crypto crypto = new Crypto();
+                        String userEncrypt = crypto.encrypt(user, iv, secretKeyUSer);
+                        String contraEncrypt = crypto.encrypt(contra, iv, secretKeyContra);
+
+                        System.out.println("user encryp: " + userEncrypt + " contra encryp: "+contraEncrypt);
+
+                        //Incluyendo el path del cookie.
+                        response.cookie("/", "login", userEncrypt + "," + contraEncrypt, 604800, false);
+
+                    }
+
+                    jsonResponse.put("usuario", usuario1);
+
+
+                }
+
+                return null;
+            });
 
 
         }
