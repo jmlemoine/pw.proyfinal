@@ -1,3 +1,4 @@
+import encapsulacion.Ruta;
 import encapsulacion.Usuario;
 import freemarker.template.Configuration;
 import freemarker.template.Version;
@@ -7,13 +8,12 @@ import modelo.EntityServices.EntityServices.UsuarioService;
 import modelo.EntityServices.EntityServices.VisitaService;
 import modelo.EntityServices.utils.Crypto;
 import modelo.EntityServices.utils.DBService;
+import modelo.EntityServices.utils.Rest.JsonUtilidades;
+import modelo.EntityServices.utils.TokenService;
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.*;
 
@@ -117,13 +117,61 @@ import static spark.Spark.*;
                     }
 
                     jsonResponse.put("usuario", usuario1);
-
+                    String token = TokenService.createJWT(UUID.randomUUID().toString(),
+                            usuario1.getAdministrator() ? "admin" : "user",
+                            usuario1.getUsername(), 604800000);
+                    jsonResponse.put("token", token);
+                    request.session(true);
+                    request.session().attribute("usuario", usuario1);
+                    response.header("Content-Type", "application/json");
+                    System.out.println("funca");
+                    response.redirect("/inicio/1");
+                    for (Ruta r : rutaService.getNulls()) {
+                        r.setUsuario(usuario1);
+                        rutaService.update(r);
+                    }
+                }
+                else {
 
                 }
 
-                return null;
+                return jsonResponse;
+            }, JsonUtilidades.json());
+
+            get("/inicio/:pag", (request, response) -> {
+                Map<String, Object> attributes = new HashMap<>();
+                Usuario usuario = request.session().attribute("usuario");
+                String p = request.session().attribute("usuario");
+                userLevel(attributes, usuario);
+                int pagina = Integer.parseInt(p);
+                Ruta n;
+                if (usuario == null){
+                    attributes.put("list", rutaService.getNullsPagination(pagina));
+                    attributes.put("actual", pagina);
+                    attributes.put("paginas", Math.ceil(rutaService.cantPagNulls()/5f));
+                    attributes.put("ruta", rutaService.getNulls());
+
+                }
+                else {
+                    attributes.put("list", rutaService.getPagination(pagina, usuario.getId()));
+                    attributes.put("actual", pagina);
+                    attributes.put("paginas", Math.ceil(rutaService.cantPag(usuario.getId())/5f));
+                    attributes.put("ruta", rutaService.getByUser(usuario.getId()));
+                    attributes.put("usuario", usuario);
+                }
+                return new ModelAndView(attributes, "inicio.ftl")
+
             });
 
+
+        }
+
+        private static void userLevel(Map<String, Object> attributes, Usuario usuario){
+            attributes.put("usuario", usuario);
+            if (usuario != null){
+                attributes.put("admin", usuario.getAdministrator());
+                attributes.put("usuarioName", usuario.getNombre());
+            }
 
         }
 
