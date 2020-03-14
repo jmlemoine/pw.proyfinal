@@ -159,7 +159,7 @@ import static spark.Spark.*;
                     attributes.put("ruta", rutaService.getByUser(usuario.getId()));
                     attributes.put("usuario", usuario);
                 }
-                return new ModelAndView(attributes, "inicio.ftl")
+                return new ModelAndView(attributes, "inicio.ftl");
 
             });
 
