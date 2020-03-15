@@ -44,7 +44,7 @@ public class UsuarioDAOImpl extends CRUD<Usuario> implements UsuarioDAO {
     }
 
     @Override
-    public Usuario getByID(long id) {
+    public Usuario getById(long id) {
         EntityManager em = getEntityManager();
         Query query = em.createNamedQuery("Usuario.findUsuariobyId");
         query.setParameter("id", id);

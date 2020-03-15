@@ -44,8 +44,8 @@ public class UsuarioService implements UsuarioDAO {
     }
 
     @Override
-    public Usuario getByID(long id) {
-        return usuarioDAO.getByID(id);
+    public Usuario getById(long id) {
+        return usuarioDAO.getById(id);
     }
 
     @Override

@@ -160,8 +160,34 @@ import static spark.Spark.*;
                     attributes.put("usuario", usuario);
                 }
                 return new ModelAndView(attributes, "inicio.ftl");
+            }, freeMarkerEngine);
 
-            });
+            get("/stats/:id", (request, response) -> {
+                Map<String, Object> attributes = new HashMap<>();
+                Usuario usuario = request.session().attribute("usuario");
+                userLevel(attributes, usuario);
+                String id = request.params("id");
+                int rid = Integer.parseInt(id);
+                attributes.put("link", rutaService.getById(rid));
+                return new ModelAndView(attributes, "stats.ftl");
+            }, freeMarkerEngine);
+
+            get("/links_usuario/:id/:pag", (request, response) -> {
+                String id = request.params("id");
+                long userid = Integer.parseInt(id);
+                String p = request.params("pag");
+                int pagina = Integer.parseInt(p);
+                Map<String, Object> attributes = new HashMap<>();
+                Usuario usuario = request.session().attribute("usuario");
+                userLevel(attributes, usuario);
+                attributes.put("actual", pagina);
+                attributes.put("paginas", Math.ceil(rutaService.cantPagNulls() / 5f));
+                attributes.put("list", rutaService.getPagination(pagina, userid));
+                attributes.put("ruta", rutaService.getPagination(pagina, userid));
+                attributes.put("user", usuarioService.getById(userid));
+                return new ModelAndView(attributes, "links_usuario.ftl");
+
+            }, freeMarkerEngine);
 
 
         }
