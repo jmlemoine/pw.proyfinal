@@ -11,12 +11,15 @@ import modelo.EntityServices.EntityServices.UsuarioService;
 import modelo.EntityServices.EntityServices.VisitaService;
 import modelo.EntityServices.utils.Crypto;
 import modelo.EntityServices.utils.DBService;
+import modelo.EntityServices.utils.Filtros;
 import modelo.EntityServices.utils.Rest.JsonUtilidades;
+import modelo.EntityServices.utils.SOAP.Arranque;
 import modelo.EntityServices.utils.TokenService;
 import spark.ModelAndView;
 import spark.Session;
 import spark.template.freemarker.FreeMarkerEngine;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 import static spark.Spark.*;
@@ -507,7 +510,7 @@ import static spark.Spark.*;
                     return true;
                 }, JsonUtilidades.json());
 
-                //Eliminar una ruta
+                //Elimina una ruta
                 delete("/:id", (request, response) -> {
                     Visita visita = new Gson().fromJson(request.body(), Visita.class);
                     visitaService.delete(visita);
@@ -516,8 +519,23 @@ import static spark.Spark.*;
 
             });
 
+            Arranque.init();
+
+            new Filtros().filtros();
 
 
+        }
+
+        private static String getClientIp(HttpServletRequest request){
+            String remoteAddr = "";
+
+            if (request != null){
+                remoteAddr = request.getHeader("X-FORWARDED-FOR");
+                if (remoteAddr == null || "".equals(remoteAddr)){
+                    remoteAddr = request.getRemoteAddr();
+                }
+            }
+            return remoteAddr;
 
         }
 
