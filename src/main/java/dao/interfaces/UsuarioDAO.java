@@ -16,7 +16,7 @@ public interface UsuarioDAO {
 
     Usuario getById(long id);
 
-    Usuario validateLogin(String user, String pass);
+    Usuario validateLogIn(String user, String pass);
     List<Usuario> getPagination(int pag);
 
 }

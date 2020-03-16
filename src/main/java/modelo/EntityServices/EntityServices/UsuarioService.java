@@ -49,7 +49,7 @@ public class UsuarioService implements UsuarioDAO {
     }
 
     @Override
-    public Usuario validateLogin(String user, String pass) {
+    public Usuario validateLogIn(String user, String pass) {
         return usuarioDAO.validateLogin(user, pass);
     }
 
