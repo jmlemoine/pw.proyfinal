@@ -50,7 +50,7 @@ public class UsuarioService implements UsuarioDAO {
 
     @Override
     public Usuario validateLogIn(String user, String pass) {
-        return usuarioDAO.validateLogin(user, pass);
+        return usuarioDAO.validateLogIn(user, pass);
     }
 
     @Override

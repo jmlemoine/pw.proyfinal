@@ -52,7 +52,7 @@ public class UsuarioDAOImpl extends CRUD<Usuario> implements UsuarioDAO {
     }
 
     @Override
-    public Usuario validateLogin(String user, String pass) {
+    public Usuario validateLogIn(String user, String pass) {
         Usuario usuario = null;
         EntityManager em = getEntityManager();
         Query query = em.createNamedQuery("Usuario.validateLogIn");
