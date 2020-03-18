@@ -147,7 +147,7 @@ import static spark.Spark.*;
             get("/inicio/:pag", (request, response) -> {
                 Map<String, Object> attributes = new HashMap<>();
                 Usuario usuario = request.session().attribute("usuario");
-                String p = request.session().attribute("usuario");
+                String p = request.params("pag");
                 userLevel(attributes, usuario);
                 int pagina = Integer.parseInt(p);
                 Ruta n;
