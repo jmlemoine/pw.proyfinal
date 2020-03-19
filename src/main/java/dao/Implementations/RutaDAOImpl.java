@@ -48,7 +48,7 @@ public class RutaDAOImpl extends CRUD<Ruta> implements RutaDAO {
         EntityManager em = getEntityManager();
         Query query = em.createNamedQuery("Ruta.findURLbyId");
         query.setParameter("id", id);
-        return (Ruta) query.getResultList();
+        return (Ruta) query.getSingleResult();
     }
 
     @Override
