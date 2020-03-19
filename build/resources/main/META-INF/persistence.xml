@@ -5,11 +5,11 @@
              version="2.1">
     <persistence-unit name="UnidadPersistencia" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>encapsulacion.Ruta</class>
         <class>encapsulacion.Usuario</class>
+        <class>encapsulacion.Ruta</class>
         <class>encapsulacion.Visita</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/pwproyectofina" />
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
