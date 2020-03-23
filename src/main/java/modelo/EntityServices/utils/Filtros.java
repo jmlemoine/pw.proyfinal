@@ -17,6 +17,7 @@ public class Filtros {
             if (usuario == null || !usuario.getAdministrator()) {
                 response.redirect("/inicio/1");
             }
+
         });
         before("/adminPanel/:pag/:pagl", (request, response) -> {
             Usuario usuario = request.session(true).attribute("usuario");
