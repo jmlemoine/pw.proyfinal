@@ -48,6 +48,8 @@ import static spark.Spark.*;
 
             //Entrando el admin
             Usuario usuarioStart = new Usuario("admin", "admin", "admin", true);
+            Usuario usuarioone = new Usuario("rose", "rose", "rose", false);
+            Usuario usuariotwo = new Usuario("jean", "jean", "jean", false);
 
 
             //Clases que representan los servicios
@@ -137,9 +139,9 @@ import static spark.Spark.*;
                         r.setUsuario(usuario1);
                         rutaService.update(r);
                     }
-                } else {
+                } /*else {
                     System.out.println("Usuario incorrecto");
-                }
+                }*/
 
                 return jsonResponse;
             }, JsonUtilidades.json());
