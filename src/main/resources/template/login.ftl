@@ -22,7 +22,6 @@
                         <h4 class="card-title">Login</h4>
                         <form method="POST" action="/iniciarSesion">
                             <#assign x="">
-                            <#if user.getUsername() == "admin" || user.getUsername() == "rose" || user.getUsername() == "jean">
                             <div>
                                 <div class="form-group">
                                     <label for="email">Usuario</label>
@@ -56,11 +55,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <#else>
-                                <div class="mdl-card__supporting-text">
-                                    <p>No se puede con el mismo usuario</p>
-                                </div>
-                            </#if>
+
                         </form>
                     </div>
                 </div>
