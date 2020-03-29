@@ -15,14 +15,18 @@ import modelo.EntityServices.utils.Filtros;
 import modelo.EntityServices.utils.Rest.JsonUtilidades;
 import modelo.EntityServices.utils.SOAP.Arranque;
 import modelo.EntityServices.utils.TokenService;
+import org.h2.result.Row;
 import spark.ModelAndView;
 import spark.Session;
 import spark.template.freemarker.FreeMarkerEngine;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static spark.Spark.*;
+
 
 
 @SuppressWarnings("Duplicates")
@@ -41,6 +45,11 @@ import static spark.Spark.*;
 
 
         public static void main(String[] args) throws Exception {
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+            Date dateobj = new Date();
+            System.out.println(df.format(dateobj));
+
 
             staticFiles.location("/template");
 

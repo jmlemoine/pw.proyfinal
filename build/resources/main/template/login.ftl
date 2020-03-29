@@ -22,37 +22,40 @@
                         <h4 class="card-title">Login</h4>
                         <form method="POST" action="/iniciarSesion">
                             <#assign x="">
-                            <div class="form-group">
-                                <label for="email">Usuario</label>
+                            <div>
+                                <div class="form-group">
+                                    <label for="email">Usuario</label>
 
-                                <input id="email" type="text" class="form-control" name="usuario" required autofocus
-                                       value=${user!x}>
+                                    <input id="email" type="text" class="form-control" name="usuario" required autofocus
+                                           value=${user!x}>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Contraseña
+                                    </label>
+                                    <input id="password" type="password" class="form-control" name="password" required
+                                           data-eye value=${pass!x}>
+                                </div>
+
+                                <div class="form-group no-margin">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        Login
+                                    </button>
+                                </div>
+                                <div class="form-group no-margin">
+                                    <a href="/agregarUsuario" class="btn btn-primary btn-block"
+                                       style="margin-top: 2vh">
+                                        Registrarme
+                                    </a>
+                                </div>
+                                <div class="form-group no-margin">
+                                    <a href="/inicio/1" class="btn btn-primary btn-block"
+                                       style="margin-top: 2vh;">
+                                        Omitir
+                                    </a>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="password">Contraseña
-                                </label>
-                                <input id="password" type="password" class="form-control" name="password" required
-                                       data-eye value=${pass!x}>
-                            </div>
-
-                            <div class="form-group no-margin">
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    Login
-                                </button>
-                            </div>
-                            <div class="form-group no-margin">
-                                <a href="/agregarUsuario" class="btn btn-primary btn-block"
-                                   style="margin-top: 2vh">
-                                    Registrarme
-                                </a>
-                            </div>
-                            <div class="form-group no-margin">
-                                <a href="/inicio/1" class="btn btn-primary btn-block"
-                                   style="margin-top: 2vh;">
-                                    Omitir
-                                </a>
-                            </div>
                         </form>
                     </div>
                 </div>
