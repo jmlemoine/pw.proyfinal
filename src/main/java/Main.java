@@ -265,6 +265,9 @@ import static spark.Spark.*;
                 RutaService.getInstancia().insert(r);
                 shortUrl(r.getId());
                 response.redirect("/inicio/1");
+                DateFormat dtf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+                Date datetobj = new Date();
+                System.out.println(dtf.format(datetobj));
                 return "";
             });
 
