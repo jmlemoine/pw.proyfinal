@@ -1,27 +1,27 @@
-apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: 'com.github.johnrengelman.shadow'
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+    id 'application'
+}
+
 
 
 group 'pw'
 version '1.0-SNAPSHOT'
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.1'
-    }
-}
+
 sourceCompatibility = 1.8
 mainClassName = 'main/Main'
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     //testCompile group: 'junit', name: 'junit', version: '4.12'
-
+    shadow localGroovy()
+    shadow gradleApi()
     compile 'com.sparkjava:spark-core:2.7.2'
     compile group: 'com.h2database', name: 'h2', version: '1.4.197'
     compile 'com.sparkjava:spark-template-freemarker:2.7.1'
@@ -38,17 +38,17 @@ dependencies {
 
     compile group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '9.4.4.v20170414'
 
-    //Para los errores.
     compile 'org.slf4j:slf4j-simple:1.7.21'
+    compile 'org.jdom:jdom2:2.0.6'
+    compile 'org.ow2.asm:asm:6.0'
+    compile 'org.ow2.asm:asm-commons:6.0'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.apache.ant:ant:1.9.4'
+    compile 'org.codehaus.plexus:plexus-utils:2.0.6'
 
 }
-shadowJar {
-    baseName ='pw.proyfinal'
-    classifier = null
-    version = null
-    version = 0.1
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
 }
 
-task stage {
-    dependsOn shadowJar
-}
+tasks.shadowJar.dependsOn tasks.relocateShadowJar
