@@ -9,7 +9,7 @@
         <class>encapsulacion.Ruta</class>
         <class>encapsulacion.Visita</class>
         <properties>
-            <property name="hibernate.connection.driver" value="org.h2.Driver" />
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver" />
             <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/pwproyectofina"/>
             <property name="hibernate.connection.user" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
