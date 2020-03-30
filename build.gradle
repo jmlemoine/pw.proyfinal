@@ -1,12 +1,20 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
 
 group 'pw'
 version '1.0-SNAPSHOT'
-
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.1'
+    }
+}
 sourceCompatibility = 1.8
-
+mainClassName = 'main/Main'
 repositories {
     mavenCentral()
 }
@@ -33,4 +41,14 @@ dependencies {
     //Para los errores.
     compile 'org.slf4j:slf4j-simple:1.7.21'
 
+}
+shadowJar {
+    baseName ='webfinal'
+    classifier = null
+    version = null
+    version = 0.1
+}
+
+task stage {
+    dependsOn shadowJar
 }
