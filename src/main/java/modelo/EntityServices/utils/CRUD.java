@@ -13,9 +13,9 @@ public class CRUD<T> {
     private Class<T> tClass;
 
     public CRUD(Class<T> tClass){
-        if(entityManagerFactory == null){
+       // if(entityManagerFactory == null){
             entityManagerFactory = Persistence.createEntityManagerFactory("UnidadPersistencia");
-        }
+       // }
         this.tClass = tClass;
     }
 
