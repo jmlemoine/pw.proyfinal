@@ -11,9 +11,9 @@ public class UsuarioService implements UsuarioDAO {
     private static UsuarioService instancia;
 
     public static UsuarioService getInstancia() {
-        if(instancia == null){
+        if(instancia == null)
             instancia = new UsuarioService();
-        }
+
         return instancia;
     }
 

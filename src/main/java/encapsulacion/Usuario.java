@@ -1,13 +1,16 @@
 package encapsulacion;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NamedQueries({@NamedQuery(name = "Usuario.findAllUsuario", query = "select u from Usuario u"),
         @NamedQuery(name = "Usuario.findUsuariobyId", query = "select u from Usuario u where u.id = :id"),
         @NamedQuery(name = "Usuario.validateLogIn", query = "select u from Usuario u where u.username = :username and u.password = :pass")})
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,9 @@ public class Usuario {
     private String password;
     @Column
     private Boolean administrator;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "u")
+    private Set<Ruta> rutas;
 
     public Usuario() {
     }
@@ -38,6 +44,24 @@ public class Usuario {
         this.nombre = nombre;
         this.password = password;
         this.administrator = administrator;
+    }
+
+    public Set<Ruta> getRutas() {
+        return rutas;
+    }
+
+    public void setRutas(Set<Ruta> rutas) {
+        if (this.rutas == null)
+            this.rutas = new HashSet<>();
+
+        this.rutas = rutas;
+    }
+
+    public void setRutas(Ruta rutas) {
+        if (this.rutas == null)
+            this.rutas = new HashSet<>();
+
+        this.rutas.add(rutas);
     }
 
     public long getId() {

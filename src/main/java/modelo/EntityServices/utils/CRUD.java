@@ -1,5 +1,4 @@
 package modelo.EntityServices.utils;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
@@ -15,7 +14,7 @@ public class CRUD<T> {
 
     public CRUD(Class<T> tClass){
         if(entityManagerFactory == null){
-            entityManagerFactory = Persistence.createEntityManagerFactory("UnidadPersistencia");
+            entityManagerFactory = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
         }
         this.tClass = tClass;
     }
