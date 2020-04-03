@@ -17,13 +17,13 @@ import java.util.List;
 
 public class DBService {
 
-    private static DBService instancia;
+    private static DBService instance;
 
-    public static DBService getInstancia() {
-        if (instancia == null) {
-            instancia = new DBService();
+    public static DBService getInstance() {
+        if (instance == null) {
+            instance = new DBService();
         }
-        return instancia;
+        return instance;
     }
     public void iniciarDn() {
         try {
