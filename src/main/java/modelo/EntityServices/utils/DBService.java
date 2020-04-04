@@ -4,6 +4,7 @@ import org.h2.tools.Server;
 
 import java.sql.SQLException;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -13,6 +14,8 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.Field;
 import java.util.List;
+=======
+>>>>>>> parent of a2e04db... Update DBService
 =======
 >>>>>>> parent of a2e04db... Update DBService
 
