@@ -6,7 +6,6 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="MiUnidadPersistencia" />
-          <factory-entry name="UnidadPersistencia" value="6b49bc54-68af-4b90-9676-5d1a21ceac81" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/../../src/main/resources/META-INF/persistence.xml" />

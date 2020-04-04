@@ -46,6 +46,13 @@ import static spark.Spark.*;
 
         public static void main(String[] args) throws Exception {
 
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            if (processBuilder.environment().get("PORT") != null) {
+                port(Integer.parseInt(processBuilder.environment().get("PORT")));
+            }else{
+                port(8080);
+            }
+
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date dateobj = new Date();
             System.out.println(df.format(dateobj));

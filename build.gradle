@@ -1,4 +1,4 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+//import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
 
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.2.0'
@@ -19,7 +19,7 @@ version '1.0-SNAPSHOT'
     }
 }*/
 sourceCompatibility = 1.8
-mainClassName = 'Main/main'
+mainClassName = 'main/Main'
 
 repositories {
     mavenCentral()
@@ -55,11 +55,16 @@ dependencies {
 
 }
 
-task relocateShadowJar(type: ConfigureShadowRelocation) {
+/*task relocateShadowJar(type: ConfigureShadowRelocation) {
     target = tasks.shadowJar
-}
+}*/
 
-tasks.shadowJar.dependsOn tasks.relocateShadowJar
+//tasks.shadowJar.dependsOn tasks.relocateShadowJar
+
+task stage {
+    dependsOn shadowJar
+
+}
 
 shadowJar {
     version = 0.1
