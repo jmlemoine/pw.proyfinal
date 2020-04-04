@@ -7,6 +7,10 @@ plugins {
     id 'application'
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3115740b2df53f424930b664ca3c46f2ba713794
 group 'pw'
 version '1.0-SNAPSHOT'
 
