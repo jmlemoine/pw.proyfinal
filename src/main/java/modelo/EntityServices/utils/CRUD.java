@@ -9,18 +9,18 @@ import java.util.List;
 
 public class CRUD<T> {
     ////////
-    private static EntityManagerFactory entityManagerFactory;
+    private static EntityManagerFactory emf;
     private Class<T> tClass;
 
     public CRUD(Class<T> tClass){
-        if(entityManagerFactory == null){
-            entityManagerFactory = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
+        if(emf == null){
+            emf = Persistence.createEntityManagerFactory("MiUnidadPersistencia");
         }
         this.tClass = tClass;
     }
 
     public EntityManager getEntityManager(){
-        return entityManagerFactory.createEntityManager();
+        return emf.createEntityManager();
     }
 
     private Object getValorCampo(T entidad){
