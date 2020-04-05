@@ -18,6 +18,7 @@ import modelo.EntityServices.utils.TokenService;
 import org.h2.result.Row;
 import spark.ModelAndView;
 import spark.Session;
+import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,14 +46,14 @@ import static spark.Spark.*;
 
 
         public static void main(String[] args) throws Exception {
-
+            //int port;
             ProcessBuilder processBuilder = new ProcessBuilder();
             if (processBuilder.environment().get("PORT") != null) {
                 port(Integer.parseInt(processBuilder.environment().get("PORT")));
             }else{
                 port(8080);
             }
-
+            //Spark.port(port);
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             Date dateobj = new Date();
             System.out.println(df.format(dateobj));
