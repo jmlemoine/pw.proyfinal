@@ -19,7 +19,7 @@ public class Arranque {
         server.start();
         HttpContext context = build(server, "/ws");
         UsuarioSOAP usuarioSOAP = new UsuarioSOAP();
-        Endpoint endpoint = Endpoint.create(usuarioSOAP);
+       Endpoint endpoint = Endpoint.create(usuarioSOAP);
         endpoint.publish(context);
 
     }

@@ -60,7 +60,7 @@ import static spark.Spark.*;
 
             staticFiles.location("/template");
 
-            DBService.getInstance().iniciarDn();
+            DBService.getInstancia().iniciarDn();
 
             //Entrando el admin
             Usuario usuarioStart = new Usuario("admin", "admin", "admin", true);

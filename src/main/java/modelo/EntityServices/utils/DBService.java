@@ -3,9 +3,7 @@ package modelo.EntityServices.utils;
 import org.h2.tools.Server;
 
 import java.sql.SQLException;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -15,28 +13,18 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.Field;
 import java.util.List;
-=======
->>>>>>> parent of a2e04db... Update DBService
-=======
->>>>>>> parent of a2e04db... Update DBService
-=======
->>>>>>> parent of a2e04db... Update DBService
+
 
 public class DBService {
 
-    private static DBService instance;
+    private static DBService instancia;
 
-<<<<<<< HEAD
-    public static DBService getInstance() {
-        if (instance == null) {
-            instance = new DBService();
-=======
+
     public static DBService getInstancia() {
         if(instancia == null){
             instancia = new DBService();
->>>>>>> parent of a2e04db... Update DBService
         }
-        return instance;
+        return instancia;
     }
     public void iniciarDn() {
         try {
